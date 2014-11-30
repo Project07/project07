@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    
+      google.load('visualization', '1', {'packages': ['table', 'map', 'corechart']});
+      google.setOnLoadCallback(initialize);
+
+  function initialize() {
+        // The URL of the spreadsheet to source data from.
+       // var query = new google.visualization.Query( [
+       //   ['Location', 'Rice', 'Sugar', 'Salt'],
+       //   ['Paulo Alto', 11, 2,4],
+       //   ['Paulo Alto', 22, 4,6],
+       //   ['Paulo Alto', 14, 3,2]]);
+            
+     //   query.send(draw);
+     
+     
+     
+        // Create our data table.
+        data = new google.visualization.DataTable();
+        data.addColumn('string', 'user_name');
+        data.addColumn('number', 'item_count');
+        data.addColumn('number', 'item_threshold');
+        data.addColumn('number', 'item_quantity');
+        data.addRows(results);
+
+        // Set chart options
+        var options = {'title':'Data analysis',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        google.visualization.events.addListener(chart, 'select', selectHandler);
+        chart.draw(data, options);
+     
+     
+     
+     
+     
+      }
+      
+      function draw(response) {
+        if (response.isError()) {
+          alert('Error in query');
+        }
+
+        var ticketsData = response.getDataTable();
+        var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div'));
+        chart.draw(ticketsData, {'isStacked': true, 'legend': 'bottom',
+            'vAxis': {'title': 'Trend in 60 days'}});
+
+        var geoData = google.visualization.arrayToDataTable([
+          ['Lat', 'Lon', 'Name', 'Item Description','Is out of stock?','Ready for delivery'],
+          [37.4232, -122.0853, 'Smith','Rice',true,true],
+          [37.4289, -122.1697, 'Margarate Tailor','Sugar', true,true],
+          [37.6153, -122.3900, 'Richard James','Salt', false,false]]);
+
+
+        var geoView = new google.visualization.DataView(geoData);
+        geoView.setColumns([0, 1]);
+
+        var table =
+            new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(geoData, {showRowNumber: false});
+
+        var map =
+            new google.visualization.Map(document.getElementById('map_div'));
+        map.draw(geoView, {showTip: true});
+
+        // Set a 'select' event listener for the table.
+        // When the table is selected, we set the selection on the map.
+        google.visualization.events.addListener(table, 'select',
+            function() {
+              map.setSelection(table.getSelection());
+            });
+
+        // Set a 'select' event listener for the map.
+        // When the map is selected, we set the selection on the table.
+        google.visualization.events.addListener(map, 'select',
+            function() {
+              table.setSelection(map.getSelection());
+            });
+      }
+    </script>
+  </head>
+
+  <body>
+    <table align="center">
+      <tr valign="top">
+        <td style="width: 50%;">
+          <div id="map_div" style="width: 400px; height: 300;"></div>
+        </td>
+        <td style="width: 50%;">
+          <div id="table_div"></div>
+        </td>
+      </tr>
+      <tr>
+        <td colSpan=2>
+          <div id="chart_div" style="align: center; width: 700px; height: 300px;"></div>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+  
+</html>
