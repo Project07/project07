@@ -68,13 +68,23 @@ table, th, td {
                 	<div class="main">
                         <nav>
                             <ul class="menu">
-                                <li><a class="active" href="/">Main</a></li>
-                                <!--<li><a href="/aboutUs">About Us</a></li>-->
-                                <!--<li><a href="/courses">Courses</a></li>-->
+                                <li><a  href="/">Home</a></li>
+                               
+                                <% if (userName == "admin") { %>
+                               
 								<li><a href="/analysis">Analysis</a></li>
+								<li><a href="/dueOrders">Due Orders</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+								
+								 <% } else if (userName == "") { %>
+								  <li><a href="/aboutUs">About Us</a></li>
+								 <li><a href="/SignUp">Sign-Up</a></li>
                                 <li><a href="/signIn">Sign-In</a></li>
-								<li><a href="/geographic">Geographic</a></li>
-                                <li><a href="/SignUp">Sign-Up</a></li>
+								<% } else { %>
+								<li><a class="active" href="/myGrocery">My Grocery</a></li>
+								<li><a href="/addProductForm">Add Product</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+                                <% } %>
                                 <li class="last"><a href="/contacts">Contacts</a></li>
                             </ul>
                         </nav>
@@ -87,6 +97,7 @@ table, th, td {
         <div class="inner">
             <div class="main">
                 <section id="content">
+                <h3>Grocery Status</h3>
                     <div class="padding-2">
                         <form  action="/changeThreshold" id="contact-form" method="post" class = ="changeThreshold"> 
                         <div class="indent-top">
@@ -145,7 +156,7 @@ table, th, td {
                     <ul class="list-services">
                     	<li>Link to Us:</li>
                     	<li><a class="tooltips" title="facebook" href="https://www.facebook.com/"></a></li>
-                        <li class="item-1"><a class="tooltips" title="twitter" href="https://twitter.com/?lang=en"></a></li>
+                        <li class="item-1"><a class="tooltips" title="twitter" href="https://twitter.com/"></a></li>
                         <li class="item-2"><a class="tooltips" title="linkedin" href="https://www.linkedin.com/"></a></li>
                     </ul>
                 </div>

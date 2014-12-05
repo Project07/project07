@@ -39,25 +39,42 @@
                 	<div class="wrapper">
                         <h1><a href="index.html">GoodCook</a></h1>
                         <ul class="pagination">
-                            <li class="current"><a href="/stylesheets/bg-img1.jpg">1</a></li>
-                            <li><a href="/stylesheets/bg-img2.jpg">2</a></li>
-                            <li><a href="/stylesheets/bg-img3.jpg">3</a></li>
+                            <li class="current"><a href="/stylesheets/bg-img1.jpg"></a></li>
+                            <li><a href="/stylesheets/bg-img2.jpg"></a></li>
+                            <li><a href="/stylesheets/bg-img3.jpg"></a></li>
                         </ul>
-                        <strong class="bg-text">Background:</strong>
+                                                                               <div class="banner">
+                                    <strong class="title">
+                                        <strong>CloudMarket</strong>
+                                    </strong>
+
+                                </div>
                     </div>
                 </div>
             </div>
-            <div class="menu-row">
+           <div class="menu-row">
             	<div class="menu-border">
                 	<div class="main">
                         <nav>
                             <ul class="menu">
-                                <li><a href="index.html">Main</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="courses.html">Courses</a></li>
-                                <li><a href="recipes.html">New Recipes</a></li>
-                                <li><a href="calendar.html">Calendar</a></li>
-                                <li class="last"><a class="active" href="contacts.html">Contacts</a></li>
+                                <li><a  href="/">Home</a></li>
+                               
+                                <% if (userName == "admin") { %>
+                               
+								<li><a href="/analysis">Analysis</a></li>
+								<li><a href="/dueOrders">Due Orders</a></li>
+								<li><a href="/realtimedata">RTD</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+								 <% } else if (userName == "") { %>
+								  <li><a href="/aboutUs">About Us</a></li>
+								 <li><a href="/SignUp">Sign-Up</a></li>
+                                <li><a href="/signIn">Sign-In</a></li>
+								<% } else { %>
+								<li><a href="/myGrocery">My Grocery</a></li>
+								<li><a href="/addProductForm">Add Product</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+                                <% } %>
+                                <li class="last"><a class="active" href="/contacts">Contacts</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -73,19 +90,19 @@
                     	<div class="wrapper">
                         	<article class="col-1">
                             	<div class="indent-left">
-                                	<h3>Contact Form</h3>
+                                	<h3>Contact Us</h3>
                                     <div class="p3">
-                                        <form id="contact-form" method="post" enctype="multipart/form-data">                    
+                                        <form action="/contactUs" id="contact-form" method="post">                    
                                             <fieldset>
-                                                  <label><span class="text-form">Full Name:</span><input name="p1" type="text" /></label>
-                                                  <label><span class="text-form">E-mail:</span><input name="p2" type="text" /></label>                              
+                                                  <label><span class="text-form">Full Name:</span><input name="name" type="text" /></label>
+                                                  <label><span class="text-form">E-mail:</span><input name="email" type="email" /></label>                              
                                                   <div class="wrapper">
-                                                    <div class="text-form">Message:</div>
+                                                    <div class="text-form">Message for us: </div>
                                                     <div class="extra-wrap">
-                                                        <textarea></textarea>
+                                                        <textarea name="message" type="text"></textarea>
                                                         <div class="clear"></div>
                                                         <div class="buttons">
-                                                            <a class="button-2" href="#" onClick="document.getElementById('contact-form').reset()">Clear</a>
+                                                          
                                                             <a class="button-2" href="#" onClick="document.getElementById('contact-form').submit()">Send</a>
                                                         </div> 
                                                     </div>
@@ -96,46 +113,48 @@
                                 </div>
                                 <div class="bg">
                                     <div class="padding">
-                                    	<h3>Miscellaneous Info</h3>
-                                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-                                    </div>
+                                    	<h3>Contact Us Policy</h3>
+                                        Contact  us services by email, phone or you are welcome to our locations mentioned. You can submit your message or feedback via this form. Your Feedback is essential for us.  
+                                        
+                                        </div>
                                 </div>
                             </article>
-                            <article class="col-2">
-                            	<h3 class="border-bot indent-bot">Our Contacts</h3>
+                             <article class="col-2">
+                            	<h3 class="border-bot indent-bot">Store Locations</h3>
                                 <div class="img-indent-bot">
-                                    <h6>USA</h6>
+                                    <h6>SafeWay - San Jose</h6>
                                     <dl>
-                                        <dt>8901 Marmora Road, Glasgow, D04</dt>
+										
+                                        <dt>14, Hatchet Road, Alameda, CA</dt>
                                         <dd><span>Telephone:</span>  +1 959 603 6035</dd>
                                         <dd><span>FAX:</span>  +1 504 889 9898</dd>
-                                        <dd><span>E-mail:</span><a href="#">mail@thomsander.com</a></dd>
+                                        <dd><span>E-mail:</span><a href="#">mail@safeway.com</a></dd>
                                     </dl>
                                 </div>
                                 <div class="img-indent-bot">
-                                    <h6>Canada</h6>
+                                    <h6>Walmart - San Jose</h6>
                                     <dl>
-                                        <dt>8901 Marmora Road, Glasgow, D04</dt>
-                                        <dd><span>Telephone:</span>  +1 959 603 6035</dd>
-                                        <dd><span>FAX:</span>  +1 504 889 9898</dd>
-                                        <dd><span>E-mail:</span><a href="#">mail@thomsander.com</a></dd>
+                                        <dt>22 Marmora Road, Glasgow, CA</dt>
+                                        <dd><span>Telephone:</span>  +1 459 603 6035</dd>
+                                        <dd><span>FAX:</span>  +1 504 349 9898</dd>
+                                        <dd><span>E-mail:</span><a href="#">mail@walmart.com</a></dd>
                                     </dl>
                                 </div>
                                 <div class="img-indent-bot">
-                                    <h6>Great Britain</h6>
+                                    <h6>Indian Store - San Jose</h6>
                                     <dl>
-                                        <dt>8901 Marmora Road, Glasgow, D04</dt>
-                                        <dd><span>Telephone:</span>  +1 959 603 6035</dd>
-                                        <dd><span>FAX:</span>  +1 504 889 9898</dd>
-                                        <dd><span>E-mail:</span><a href="#">mail@thomsander.com</a></dd>
+                                        <dt>25 Race Street, Glasgow, CA</dt>
+                                        <dd><span>Telephone:</span>  +1 959 632 6035</dd>
+                                        <dd><span>FAX:</span>  +1 504 889 4818</dd>
+                                        <dd><span>E-mail:</span><a href="#">mail@store.com</a></dd>
                                     </dl>
                                 </div>
-                                <h6>Japan</h6>
+                                <h6>Target - San Jose</h6>
                                 <dl>
-                                    <dt>8901 Marmora Road, Glasgow, D04</dt>
-                                    <dd><span>Telephone:</span>  +1 959 603 6035</dd>
-                                    <dd><span>FAX:</span>  +1 504 889 9898</dd>
-                                    <dd><span>E-mail:</span><a href="#">mail@thomsander.com</a></dd>
+                                    <dt>33 Agnew Road, Glasgow, CA</dt>
+                                    <dd><span>Telephone:</span>  +1 959 473 6035</dd>
+                                    <dd><span>FAX:</span>  +1 504 889 9800</dd>
+                                    <dd><span>E-mail:</span><a href="#">mail@target.com</a></dd>
                                 </dl>
                             </article>
                         </div>
@@ -146,19 +165,20 @@
         </div>
     </div>
 	<!--==============================footer=================================-->
-    <footer>
+     <footer>
     	<div class="padding">
         	<div class="main">
                 <div class="wrapper">
                 	<div class="fleft footer-text">
-                    	<span>Good Cook</span> &copy; 2011
-                        <strong>Website Template by <a rel="nofollow" class="link" target="_blank" href="http://www.templatemonster.com/">TemplateMonster.com</a></strong>
+                    	<span>Cloud Market</span> &copy; 2014
+                        <strong>Website Template by CloudMarket.com</a></strong>
+                        <!-- {%FOOTER_LINK} -->
                     </div>
                     <ul class="list-services">
                     	<li>Link to Us:</li>
-                    	<li><a class="tooltips" title="facebook" href="#"></a></li>
-                        <li class="item-1"><a class="tooltips" title="twitter" href="#"></a></li>
-                        <li class="item-2"><a class="tooltips" title="linkedin" href="#"></a></li>
+                    	<li><a class="tooltips" title="facebook" href="https://www.facebook.com/"></a></li>
+                        <li class="item-1"><a class="tooltips" title="twitter" href="https://twitter.com/"></a></li>
+                        <li class="item-2"><a class="tooltips" title="linkedin" href="https://www.linkedin.com/"></a></li>
                     </ul>
                 </div>
             </div>
