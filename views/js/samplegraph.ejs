@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="/stylesheets/layout.css" type="text/css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>   
+    <script src="/stylesheets/jquery-1.6.3.min.js" type="text/javascript"></script>
+    <script src="/stylesheets/cufon-yui.js" type="text/javascript"></script>
+    <script src="/stylesheets/cufon-replace.js" type="text/javascript"></script>
+    <script src="/stylesheets/Lobster_13_400.font.js" type="text/javascript"></script>
+    <script src="/stylesheets/NewsGoth_BT_400.font.js" type="text/javascript"></script>
+    <script src="/stylesheets/FF-cash.js" type="text/javascript"></script>
+    <script src="/stylesheets/easyTooltip.js" type="text/javascript"></script>
+	<script src="/stylesheets/script.js" type="text/javascript"></script>
+    <script src="/stylesheets/bgSlider.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {'packages': ['table', 'map', 'corechart']});
+      google.setOnLoadCallback(initialize);
+
+      function initialize() {
+        // The URL of the spreadsheet to source data from.
+        var query = new google.visualization.Query("https://docs.google.com/spreadsheets/d/1GOr6jcVNaNtQi9cKaRp0pGcvRwgIReB_QqOVRkiy5Rk/edit#gid=0");
+        query.send(draw);
+      }
+
+      function draw(response) {
+        if (response.isError()) {
+          alert('Error in query');
+        }
+
+        var ticketsData = response.getDataTable();
+        var chart = new google.visualization.ColumnChart(
+            document.getElementById('chart_div'));
+        chart.draw(ticketsData, {'isStacked': true, 'legend': 'bottom',
+            'vAxis': {'title': 'Trend in 60 days'}});
+
+        var geoData = google.visualization.arrayToDataTable([
+          ['Lat', 'Lon', 'Name', 'Item Description','Is out of stock?','Ready for delivery'],
+          [37.4232, -122.0853, 'Smith','Rice',true,true],
+          [37.4289, -122.1697, 'Margarate Tailor','Sugar', true,true],
+          [37.6153, -122.3900, 'Richard James','Salt', false,false]]);
+
+
+
+        var geoView = new google.visualization.DataView(geoData);
+        geoView.setColumns([0, 1]);
+
+        var table =
+            new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(geoData, {showRowNumber: false});
+
+        var map =
+            new google.visualization.Map(document.getElementById('map_div'));
+        map.draw(geoView, {showTip: true});
+
+        // Set a 'select' event listener for the table.
+        // When the table is selected, we set the selection on the map.
+        google.visualization.events.addListener(table, 'select',
+            function() {
+              map.setSelection(table.getSelection());
+            });
+
+        // Set a 'select' event listener for the map.
+        // When the map is selected, we set the selection on the table.
+        google.visualization.events.addListener(map, 'select',
+            function() {
+              table.setSelection(map.getSelection());
+            });
+      }
+    </script>
+</head>
+<body id="page6">
+	<div id="bgSlider"></div>
+    <div class="bg_spinner"></div>
+	<div class="extra">
+        <!--==============================header=================================-->
+        <header>
+        	<div class="top-row">
+            	<div class="main">
+                	<div class="wrapper">
+                        <h1><a href="index.html">GoodCook</a></h1>
+                        <ul class="pagination">
+                            <li class="current"><a href="/stylesheets/bg-img1.jpg"></a></li>
+                            <li><a href="/stylesheets/bg-img2.jpg"></a></li>
+                            <li><a href="/stylesheets/bg-img3.jpg"></a></li>
+                        </ul>
+                                                                               <div class="banner">
+                                    <strong class="title">
+                                        <strong>CloudMarket</strong>
+                                    </strong>
+
+                                </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-row">
+            	<div class="menu-border">
+                	<div class="main">
+                        <nav>
+					<ul class="menu">
+                                <li><a class="active" href="/">Home</a></li>
+                                <li><a href="/aboutUs">About Us</a></li>
+                        
+								<li><a href="/analysis">Analysis</a></li>
+								<li><a href="/dueOrders">Due Orders</a></li>
+
+								<li><a href="/signOut">Sign-Out</a></li>
+                            
+                                <li class="last"><a href="/contacts">Contacts</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+			<div class="ic">More Website Templates @ TemplateMonster.com - September 26, 2011!</div>
+        </header>
+        <!--==============================content================================-->
+        <div class="inner">
+            <div class="main">
+                <section id="content">
+                    <div class="indent">
+                    	<div class="wrapper">
+					<table align="center">
+					  <tr valign="top">
+						<td style="width: 50%;">
+						  <div id="map_div" style="width: 400px; height: 300;"></div>
+						</td>
+						<td style="width: 50%;">
+						  <div id="table_div"></div>
+						</td>
+					  </tr>
+					  <tr>
+						<td colSpan=2>
+						  <div id="chart_div" style="align: center; width: 700px; height: 300px;"></div>
+						</td>
+					  </tr>
+					</table>
+                        </div>
+                    </div>
+                </section>
+                <div class="block"></div>
+            </div>
+        </div>
+    </div>
+	<!--==============================footer=================================-->
+    <footer>
+    	<div class="padding">
+        	<div class="main">
+                <div class="wrapper">
+                	<div class="fleft footer-text">
+                    	<span>Cloud Market</span> &copy; 2014
+                        <strong>Website Template by CloudMarket.com</a></strong>
+                        <!-- {%FOOTER_LINK} -->
+                    </div>
+                    <ul class="list-services">
+                    	<li>Link to Us:</li>
+                    	<li><a class="tooltips" title="facebook" href="https://www.facebook.com/"></a></li>
+                        <li class="item-1"><a class="tooltips" title="twitter" href="#"></a></li>
+                        <li class="item-2"><a class="tooltips" title="linkedin" href="#"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>
