@@ -55,16 +55,24 @@
                     </div>
                 </div>
             </div>
-            <div class="menu-row">
+           <div class="menu-row">
             	<div class="menu-border">
                 	<div class="main">
                         <nav>
                             <ul class="menu">
-                                <li><a class="active" href="/">Main</a></li>
-                                <!--<li><a href="/aboutUs">About Us</a></li>-->
-                                <!--<li><a href="/courses">Courses</a></li>-->
+                                <li><a class="active" href="/">Home</a></li>
+                                <li><a href="/aboutUs">About Us</a></li>
+                                <% if (userName == "admin") { %>
 								<li><a href="/analysis">Analysis</a></li>
-								<li><a href="/geographic">Geographic</a></li>
+								<li><a href="/dueOrders">Due Orders</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+								 <% } else if (userName == "") { %>
+								 <li><a href="/SignUp">Sign-Up</a></li>
+                                <li><a href="/signIn">Sign-In</a></li>
+								<% } else { %>
+								<li><a href="/myGrocery">My Grocery</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+                                <% } %>
                                 <li class="last"><a href="/contacts">Contacts</a></li>
                             </ul>
                         </nav>
