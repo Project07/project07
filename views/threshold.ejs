@@ -52,17 +52,28 @@
                     </div>
                 </div>
             </div>
-            <div class="menu-row">
+           <div class="menu-row">
             	<div class="menu-border">
                 	<div class="main">
                         <nav>
                             <ul class="menu">
-                                <li><a href="index.html">Main</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="courses.html">Courses</a></li>
-                                <li><a href="recipes.html">New Recipes</a></li>
-                                <li><a class="active" href="signup.html">Sign-Up</a></li>
-                                <li class="last"><a  href="contacts.html">Contacts</a></li>
+                                <li><a class="active" href="/">Home</a></li>
+                               
+                                <% if (userName == "admin") { %>
+                               
+								<li><a href="/analysis">Analysis</a></li>
+								<li><a href="/dueOrders">Due Orders</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+								 <% } else if (userName == "") { %>
+								  <li><a href="/aboutUs">About Us</a></li>
+								 <li><a href="/SignUp">Sign-Up</a></li>
+                                <li><a href="/signIn">Sign-In</a></li>
+								<% } else { %>
+								<li><a href="/myGrocery">My Grocery</a></li>
+								<li><a href="/addProductForm">Add Product</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+                                <% } %>
+                                <li class="last"><a href="/contacts">Contacts</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -78,16 +89,22 @@
                     	<div class="wrapper">
                         	<article class="col-1">
                             	<div class="indent-left">
-                                	<h3>Sign-Up Form</h3>
+                                	<h3>Change Threshold of your Grocery</h3>
                                     <div class="p3">
                                         <form action="/afterChangeThreshold" id="contact-form" method="post" >                    
                                             <fieldset>
                                            
 										           
-                                                  <label><span class="text-form">Product Name</span><input name="product" type="text" class="form-control" id="fName"  /></label>
-
-												
-                                                  <label><span class="text-form">New Threshold</span><input name="threshold" type="text" class="form-control" id="email" /></label>
+                                                  
+													 <label><span class="text-form">Product Name</span> <select title="Select a product " class="product"
+													id="product" name="product"> <% if(item
+													!= null){ item.forEach(function(item) {%>
+													<option name="product" value="<%= item.item_name%>"><%=
+													item.item_name %></option> <% console.log("name:"+item.item_name); });} %>
+													</select></label>
+													
+													
+                                                  <label><span class="text-form">New Threshold</span><input name="threshold" type="number" class="form-control" id="email" /></label>
 												  <div class="clear"></div>
                                                         <div class="buttons">
                                                             
@@ -98,51 +115,9 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="bg">
-                                    <div class="padding">
-                                    	<h3>Sign Up Policy</h3>
-                                        We at cloud market do not disclose customer information to any third party. We do not sell this customer to any other retailer. We purely do the analysis of trends of purchases in order to do the inventory management effectively. The whole idea behind this initiative is to reduce the waste of any kind of grocery.
-                                    </div>
-                                </div>
+                               
                             </article>
-                            <article class="col-2">
-                            	<h3 class="border-bot indent-bot">Store Locations</h3>
-                                <div class="img-indent-bot">
-                                    <h6>SafeWay - San Jose</h6>
-                                    <dl>
-										
-                                        <dt>14, Hatchet Road, Alameda, CA</dt>
-                                        <dd><span>Telephone:</span>  +1 959 603 6035</dd>
-                                        <dd><span>FAX:</span>  +1 504 889 9898</dd>
-                                        <dd><span>E-mail:</span><a href="#">mail@safeway.com</a></dd>
-                                    </dl>
-                                </div>
-                                <div class="img-indent-bot">
-                                    <h6>Walmart - San Jose</h6>
-                                    <dl>
-                                        <dt>22 Marmora Road, Glasgow, CA</dt>
-                                        <dd><span>Telephone:</span>  +1 459 603 6035</dd>
-                                        <dd><span>FAX:</span>  +1 504 349 9898</dd>
-                                        <dd><span>E-mail:</span><a href="#">mail@walmart.com</a></dd>
-                                    </dl>
-                                </div>
-                                <div class="img-indent-bot">
-                                    <h6>Indian Store - San Jose</h6>
-                                    <dl>
-                                        <dt>25 Race Street, Glasgow, CA</dt>
-                                        <dd><span>Telephone:</span>  +1 959 632 6035</dd>
-                                        <dd><span>FAX:</span>  +1 504 889 4818</dd>
-                                        <dd><span>E-mail:</span><a href="#">mail@store.com</a></dd>
-                                    </dl>
-                                </div>
-                                <h6>Target - San Jose</h6>
-                                <dl>
-                                    <dt>33 Agnew Road, Glasgow, CA</dt>
-                                    <dd><span>Telephone:</span>  +1 959 473 6035</dd>
-                                    <dd><span>FAX:</span>  +1 504 889 9800</dd>
-                                    <dd><span>E-mail:</span><a href="#">mail@target.com</a></dd>
-                                </dl>
-                            </article>
+                           
                         </div>
                     </div>
                 </section>
@@ -163,8 +138,8 @@
                     <ul class="list-services">
                     	<li>Link to Us:</li>
                     	<li><a class="tooltips" title="facebook" href="https://www.facebook.com/"></a></li>
-                        <li class="item-1"><a class="tooltips" title="twitter" href="#"></a></li>
-                        <li class="item-2"><a class="tooltips" title="linkedin" href="#"></a></li>
+                        <li class="item-1"><a class="tooltips" title="twitter" href="https://twitter.com/"></a></li>
+                        <li class="item-2"><a class="tooltips" title="linkedin" href="https://www.linkedin.com/"></a></li>
                     </ul>
                 </div>
             </div>

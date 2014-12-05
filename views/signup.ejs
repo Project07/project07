@@ -57,12 +57,22 @@
                 	<div class="main">
                         <nav>
                             <ul class="menu">
-                                <li><a href="index.html">Main</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="courses.html">Courses</a></li>
-                                <li><a href="recipes.html">New Recipes</a></li>
-                                <li><a class="active" href="signup.html">Sign-Up</a></li>
-                                <li class="last"><a  href="contacts.html">Contacts</a></li>
+                                <li><a  href="/">Home</a></li>
+                               
+                                <% if (userName == "admin") { %>
+								<li><a href="/analysis">Analysis</a></li>
+								<li><a href="/dueOrders">Due Orders</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+								 <% } else if (userName == "") { %>
+								  <li><a href="/aboutUs">About Us</a></li>
+								 <li><a class="active" href="/SignUp">Sign-Up</a></li>
+                                <li><a href="/signIn">Sign-In</a></li>
+								<% } else { %>
+								<li><a href="/myGrocery">My Grocery</a></li>
+								<li><a href="/addProductForm">Add Product</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+                                <% } %>
+                                <li class="last"><a href="/contacts">Contacts</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -87,11 +97,11 @@
                                                   <label><span class="text-form">First Name</span><input name="fName" type="text" class="form-control" id="fName"  /></label>
 
 												
-                                                  <label><span class="text-form">E-mail</span><input name="email" type="text" class="form-control" id="email" /></label>
-												  <label><span class="text-form">Password</span><input name="password" type="text" class="form-control" id="password" /></label>
+                                                  <label><span class="text-form">E-mail</span><input name="email" type="email" class="form-control" id="email" required/></label>
+												  <label><span class="text-form">Password</span><input name="password" type="password" class="form-control" id="password" required/></label>
 												  
-												  <label><span class="text-form">Address</span><input name="add" type="text" class="form-control" id="add" /></label>
-												  <label><span class="text-form">Telephone</span><input name="phone" type="text" class="form-control" id="phone" /></label>   
+												  <label><span class="text-form">Address</span><input name="add" type="text" class="form-control" id="add" required/></label>
+												  <label><span class="text-form">Telephone</span><input name="phone" type="text" pattern="^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$" class="form-control" id="phone" required/></label>   
 													<div class="clear"></div>
                                                         <div class="buttons">
                                                             
@@ -155,7 +165,7 @@
         </div>
     </div>
 	<!--==============================footer=================================-->
-    <footer>
+   <footer>
     	<div class="padding">
         	<div class="main">
                 <div class="wrapper">
@@ -167,8 +177,8 @@
                     <ul class="list-services">
                     	<li>Link to Us:</li>
                     	<li><a class="tooltips" title="facebook" href="https://www.facebook.com/"></a></li>
-                        <li class="item-1"><a class="tooltips" title="twitter" href="#"></a></li>
-                        <li class="item-2"><a class="tooltips" title="linkedin" href="#"></a></li>
+                        <li class="item-1"><a class="tooltips" title="twitter" href="https://twitter.com/"></a></li>
+                        <li class="item-2"><a class="tooltips" title="linkedin" href="https://www.linkedin.com/"></a></li>
                     </ul>
                 </div>
             </div>
