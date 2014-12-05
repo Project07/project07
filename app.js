@@ -31,15 +31,27 @@ if ('development' == app.get('env')) {
 app.get('/', home.homePage);
 app.get('/aboutUs', home.aboutUs);
 app.get('/analysis', home.analysis);
+app.get('/barGraph', home.barGraph);
+app.get('/pieChart', home.pieChart);
+app.get('/locationGraph',home.locationGraph);
+app.get('/histrogramGraph',home.histrogramGraph);
 app.get('/signIn', home.signIn);
 app.post('/afterSignIn', home.afterSignIn);
 app.get('/geographic', home.geographic);
 app.get('/contacts', home.contacts);
 app.get('/SignUp', home.signUp);
+
+app.get('/invoice', home.invoice);
 app.get('/changeThreshold', home.changeThreshold);
 app.post('/afterSignUp', home.afterSignUp);
 app.post('/afterChangeThreshold', home.afterChangeThreshold);
-
+app.get('/myGrocery', home.myGrocery);
+app.get('/realTimeData', home.realTimeData);
+app.get('/signOut', home.signOut);
+app.get('/dueOrders', home.dueOrders);
+app.post('/contactUs', home.contactUs);
+app.post('/addProduct', home.addProduct);
+app.get('/addProductForm', home.addProductForm);
 
 
 http.createServer(app).listen(app.get('port'), function(){
