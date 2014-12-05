@@ -60,14 +60,25 @@
                 	<div class="main">
                         <nav>
                             <ul class="menu">
-                                <li><a class="active" href="/">Main</a></li>
-                                <li><a href="/aboutUs">About Us</a></li>
-                                <!--<li><a href="/courses">Courses</a></li>-->
+                                <li><a class="active" href="/">Home</a></li>
+                               
+                                <% if (userName == "admin") { %>
 								<li><a href="/analysis">Analysis</a></li>
+								<li><a href="/dueOrders">Due Orders</a></li>
+								<li><a href="/realtimedata">RTD</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+								
+								 <% } else if (userName == "") { %>
+								  <li><a href="/aboutUs">About Us</a></li>
+								 <li><a href="/SignUp">Sign-Up</a></li>
                                 <li><a href="/signIn">Sign-In</a></li>
-								<!--<li><a href="/geographic">Geographic</a></li>-->
-                                <li><a href="/SignUp">Sign-Up</a></li>
+								<% } else { %>
+								<li><a href="/myGrocery">My Grocery</a></li>
+								<li><a href="/addProductForm">Add Product</a></li>
+								<li><a href="/signOut">Sign-Out</a></li>
+                                <% } %>
                                 <li class="last"><a href="/contacts">Contacts</a></li>
+                                <li class="last"><a href="/invoice">Invoice</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -150,7 +161,7 @@
                             <div class="wrapper">
                                 <article class="col-3">
                                     <h4><strong>Welcome</strong> <em>to Cloud Market!</em></h4>
-                                    <p6 class="color-2 p1">Cloud Market is the destination for all users to get their needful groceries in time before letting it vacant. Cloud Market allow users to select grocery items and its requirement in future.In addition to this,users will get their required grocery items directly at their home.</p6>
+                                    <p6 class="color-2 p1">Cloud Market is the destination for all users to get their grocery  before it gets out of stock. Cloud Market allows user to select grocery items and its requirement in future.In addition to this,users will get their required grocery items directly at their home.</p6>
                                     
                                 </article>
                                 <div class="extra-wrap">
@@ -177,7 +188,7 @@
                     <ul class="list-services">
                     	<li>Link to Us:</li>
                     	<li><a class="tooltips" title="facebook" href="https://www.facebook.com/"></a></li>
-                        <li class="item-1"><a class="tooltips" title="twitter" href="https://twitter.com/?lang=en"></a></li>
+                        <li class="item-1"><a class="tooltips" title="twitter" href="https://twitter.com/"></a></li>
                         <li class="item-2"><a class="tooltips" title="linkedin" href="https://www.linkedin.com/"></a></li>
                     </ul>
                 </div>
