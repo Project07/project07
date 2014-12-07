@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen">
     <link rel="stylesheet" href="/stylesheets/layout.css" type="text/css" media="screen">
-    <link rel="stylesheet" href="/stylesheets/style.css" media="all">
     <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>   
     <script src="/stylesheets/jquery-1.6.3.min.js" type="text/javascript"></script>
     <script src="/stylesheets/cufon-yui.js" type="text/javascript"></script>
@@ -29,12 +28,12 @@
         <link rel="stylesheet" href="/stylesheets/ie.css" type="text/css" media="screen">
 	<![endif]-->
 </head>
-<body id="page2">
+<body id="page6">
 	<div id="bgSlider"></div>
     <div class="bg_spinner"></div>
 	<div class="extra">
         <!--==============================header=================================-->
-       <header>
+        <header>
         	<div class="top-row">
             	<div class="main">
                 	<div class="wrapper">
@@ -44,7 +43,7 @@
                             <li><a href="/stylesheets/bg-img2.jpg"></a></li>
                             <li><a href="/stylesheets/bg-img3.jpg"></a></li>
                         </ul>
-                                                        <div class="banner">
+                                                                               <div class="banner">
                                     <strong class="title">
                                         <strong>CloudMarket</strong>
                                     </strong>
@@ -53,7 +52,7 @@
                     </div>
                 </div>
             </div>
-          <div class="menu-row">
+           <div class="menu-row">
             	<div class="menu-border">
                 	<div class="main">
                         <nav>
@@ -61,12 +60,11 @@
                                 <li><a class="active" href="/">Home</a></li>
                                
                                 <% if (userName == "admin") { %>
+                               
 								<li><a href="/analysis">Analysis</a></li>
 								<li><a href="/dueOrders">Due Orders</a></li>
-								<li><a href="/realtimedata">RTD</a></li>
 								<li><a href="/signOut">Sign-Out</a></li>
 								<li class="last"><a href="/contacts">Contacts</a></li>
-								
 								 <% } else if (userName == "") { %>
 								  <li><a href="/aboutUs">About Us</a></li>
 								 <li><a href="/SignUp">Sign-Up</a></li>
@@ -78,7 +76,6 @@
 								<li><a href="/signOut">Sign-Out</a></li>
 								<li class="last"><a href="/invoice">My Invoice</a></li>
                                 <% } %>
-                                
                                 
                             </ul>
                         </nav>
@@ -92,69 +89,21 @@
             <div class="main">
                 <section id="content">
                     <div class="indent">
-                    
-                        <header class="clearfix">
-
-      <h1 class="invoice-class">INVOICE  :</h1>
-      <div id="company" class="clearfix">
-        <div>SafeWay</div>
-        <div>14, Hatchet Road,  <br /> Alameda, CA, US</div>
-        <div>+1 959 603 6035</div>
-        <div><a href="mailto:company@example.com">mail@safeway.com</a></div>
-      </div>
-      <br>
-      
-      <div id="project">
-        <div><span>Home Delivery	:</div>
-        <div><span>User Id   		:</span> <%=  results[0].user_name %></div>
-        <div><span>User Address		:</span> <%=  results[0].address %></div>
-      </div>
-      <br>
-      
-    </header>
-	<form  action="/pay" id="contact-form" method="post" class = ="afterSignIn">                    
-	    
-      <table>
-        
-          <tr>
-            <th >Product	   </th>
-            <th >&nbsp &nbsp &nbsp DESCRIPTION</th>
-            <th >&nbsp &nbsp &nbsp &nbsp &nbsp  PRICE</th>
-            <th >QTY</th>
-            <th >TOTAL</th>
-            
-          </tr>
-        
-        
-        <ul> <% for(var i=0; i<results.length; i++) {%>
-          <tr>
-            <td > &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp  <%= results[i].item_name %></td>
-            <td > &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <%= results[i].item_description %> </td>
-            <td > &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <%= results[i].item_price %></td>
-            <td > &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  <%= results[i].item_quantity %> &nbsp &nbsp &nbsp   &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<%= results[i].item_quantity * results[i].item_price %></td>
- 
-          </tr>
-          <% } %>
-          
-		</ul>
-        
-      </table>
-      <% var sum = 0; for(var j=0; j<results.length; j++) { sum = sum + results[j].item_price; } %>
-      <br>
-     
-      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<a class="button-2" href="/changeThreshold" ">Pay Now</a>
-      <h1> Grand Total  : <%= sum %> <h1>
-      
-      
-        
-        
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
-        
-      
-
-                                                            
-    </form>
-
+                    	<div class="wrapper">
+                        	<article class="col-1">
+                            	<div class="indent-left">
+                                	<h3>Payment Done</h3>
+                                    <div class="p3">
+                                        
+                                    </div>
+                                </div>
+                               
+                            </article>
+                           
+                        </div>
+                    </div>
+                </section>
+                <div class="block"></div>
             </div>
         </div>
     </div>
@@ -163,12 +112,16 @@
     	<div class="padding">
         	<div class="main">
                 <div class="wrapper">
-                	
+                	<div class="fleft footer-text">
+                    	<span>Cloud Market</span> &copy; 2014
+                        <strong>Website Template by CloudMarket.com</a></strong>
+                        <!-- {%FOOTER_LINK} -->
+                    </div>
                     <ul class="list-services">
                     	<li>Link to Us:</li>
-                    	<li><a class="tooltips" title="facebook" href="#"></a></li>
-                        <li class="item-1"><a class="tooltips" title="twitter" href="#"></a></li>
-                        <li class="item-2"><a class="tooltips" title="linkedin" href="#"></a></li>
+                    	<li><a class="tooltips" title="facebook" href="https://www.facebook.com/"></a></li>
+                        <li class="item-1"><a class="tooltips" title="twitter" href="https://twitter.com/"></a></li>
+                        <li class="item-2"><a class="tooltips" title="linkedin" href="https://www.linkedin.com/"></a></li>
                     </ul>
                 </div>
             </div>
