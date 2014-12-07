@@ -4,6 +4,7 @@ var mysql = require('./mysql');
 
 var userName = "";
 var item;
+var userInvoice;
 
 function afterChangeThreshold(req, res) {
 
@@ -408,7 +409,7 @@ function addProductForm(req, res) {
 
 function dueOrders(req, res) {
 
-	var order = "select * from cloud_market.item_counter ic INNER JOIN cloud_market.item_info inf on ic.item_id = inf.item_id inner join cloud_market.user_info  ui on ui.user_id=ic.user_id where item_quantity < item_threshold;";
+	var order = "select * from cloud_market.item_counter ic INNER JOIN cloud_market.item_info inf on ic.item_id = inf.item_id inner join cloud_market.user_info  ui on ui.user_id=ic.user_id where item_quantity < item_threshold order by ic.user_name;";
 
 
 	console.log("Query is:" + order);
@@ -1025,33 +1026,103 @@ function contactUs(req, res) {
 }
 
 function invoice(req, res) {
-
-	var analysis = "select * from chocolate_analysis";
-	//var analysis = "select *  from item_counterer;";
-	console.log("Query is:" + analysis);
-	//userName = req.param("email");
-	var graphData =null;
+	
+var invoice = "select * from cloud_market.item_counter ic INNER JOIN cloud_market.item_info inf on ic.item_id = inf.item_id  inner join cloud_market.user_info  ui on ui.user_name=ic.user_name where ic.user_name = '"+userName+"' and ic.item_quantity < ic.item_threshold ;";
+	
+	console.log("Query is:" + invoice);
+	
 	mysql.fetchData(function(err, results) {
 		if (err) {
 			throw err;
 		} else {
-			console.log("insert successful");
+			//console.log("invoice successful" + results.length);
 
-			//results = JSON.parse(JSON.stringify(results));
-			graphData = results
-			res.render('invoice', {
+			
+			if(results.length == 0)
+				{
+				res.render('noInvoice', {
+					
 
-				graphData : graphData,
-				userName : userName
+//					userInvoice : userInvoice,
+					userName : userName,
+					results : results
+				});
+				
+				}
+			else 
+				{
+				res.render('invoice', {
+				
+
+//				userInvoice : userInvoice,
+				userName : userName,
+				results : results
 				
 			});
-			console.log("result analysis for pie" + graphData[0]);
-			console.log("result analysis" + graphData[1].Apples);
-			console.log("result analysis" + results[2].Blueberries);
+				}
 		}
-	}, analysis);
+	}, invoice);
 
 }
+
+
+function adminInvoice(req, res) {
+	
+	console.log("user name" + req.param("abc"));
+	var invoice = "select * from cloud_market.item_counter ic INNER JOIN cloud_market.item_info inf on ic.item_id = inf.item_id  inner join cloud_market.user_info  ui on ui.user_name=ic.user_name where ic.user_name = '"+req.param("abc")+"' and ic.item_count < ic.item_threshold ;";
+		
+		console.log("Query is:" + invoice);
+		
+		mysql.fetchData(function(err, results) {
+			if (err) {
+				throw err;
+			} else {
+				console.log("invoice successful");
+
+				
+				
+				res.render('invoice', {
+
+//					userInvoice : userInvoice,
+					userName : userName,
+					results : results
+					
+				});
+				
+			}
+		}, invoice);
+
+	}
+
+
+function pay(req, res) {
+	console.log("user name" + req.param("abc"));
+	var invoice = "update item_counter set item_quantity  = item_count where user_name = '"+userName+"';";
+		console.log("Query is:" + invoice);
+		
+		mysql.fetchData(function(err, results) {
+			if (err) {
+				throw err;
+			} else {
+				console.log("invoice successful");
+
+				
+				
+				res.render('payment', {
+
+//					userInvoice : userInvoice,
+					userName : userName,
+					results : results
+					
+				});
+				
+			}
+		}, invoice);
+
+	}
+
+
+exports.adminInvoice=adminInvoice;
 exports.invoice=invoice;
 exports.histrogramGraph=histrogramGraph;
 exports.locationGraph=locationGraph;
@@ -1075,3 +1146,4 @@ exports.contactUs = contactUs;
 exports.addProductForm = addProductForm;
 exports.addProduct = addProduct;
 exports.realTimeData=realTimeData;
+exports.pay=pay;
